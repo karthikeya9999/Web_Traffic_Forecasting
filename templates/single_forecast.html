@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Single Forecast</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+</head>
+<style>
+	#nav ul {
+		padding-left: 0; /* Remove default padding */
+		list-style: none; /* Remove default bullet points */
+	}
+	
+	#nav ul li {
+		display: inline-block; /* Display items horizontally */
+		padding: 0 0.8em; /* Maintain the same padding */
+	}
+	.container {
+		text-align: center;
+    }
+	#year {
+		
+		border: 2px solid #ccc;
+		border-radius: 5px; /* Optional: Add rounded corners */
+		width: 200px;
+		height: 20px;
+		padding: 5px;	
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	  }
+	  #page {
+
+		border: 2px solid #ccc;
+		border-radius: 5px; 
+		width: 800px;
+		height: 40px;
+		padding: 5px;	
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+		background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow icon */
+		background-repeat: no-repeat;
+		background-position: right 10px top 50%;
+		background-size: 20px;
+
+	  }
+</style>
+<body>
+	<div id="page-wrapper">
+		<div id="header-wrapper">
+			<div class="container">
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+						<!-- Logo -->
+						<h1><a href="/" id="logo">Web Traffic Forecasting</a></h1>
+						<!-- Nav -->
+					</div>
+						<nav id="nav">
+							<ul>
+								<li><a href="/">Home</a></li>
+								<li><a href="forecast_form.html">Forecast</a></li>
+								<li><a href="views.html">Views</a></li>
+								<li class="current_page_item"><a href="single_forecast.html">Single Forecast</a></li>
+							</ul>
+						</nav>
+				
+				</header>
+
+			</div>
+		</div>
+
+		<!-- Main Wrapper -->
+		<div id="main-wrapper">
+			<div class="wrapper style3">
+				<div class="inner">
+					<div class="container">
+						<h1>Web Traffic Visualization - Single Forecast</h1>
+
+						<form method="POST">
+							<label for="page"><h2>Select a Page</h2></label>
+							<select name="page" id="page">
+								{% for page in pages_list %}
+									<!-- Here we're displaying only a subset of pages at a time -->
+									{% if loop.index <= 100 %}
+										<option value="{{ page }}">{{ page }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+                             <br>
+							<label for="year"><h3>Enter the Year</h3></label>
+							<input type="number" name="year" id="year" required>
+                            <br><br>
+							<button type="submit">Generate Plot</button>
+						</form>
+                          <br>
+						  <br>
+						{% if plot_url %}
+						<h2>Visits for {{ selected_page }} in {{ selected_year }} (Aggregated by Month)</h2>
+						<img src="data:image/png;base64,{{ plot_url }}" alt="Visits Plot">
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/browser.min.js"></script>
+			<script src="../static/assets/js/breakpoints.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>

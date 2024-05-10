@@ -1,0 +1,153 @@
+<!-- results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../static/assets/css/main.css" />
+    <title>Results</title>
+    <style>
+      /* CSS to style the image */
+      .plot-image {
+        width: 1000px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 700px;
+      }
+     
+        #nav ul {
+          padding-left: 0; /* Remove default padding */
+          list-style: none; /* Remove default bullet points */
+        }
+        
+        #nav ul li {
+          display: inline-block; /* Display items horizontally */
+          padding: 0 0.8em; /* Maintain the same padding */
+        }
+        .container {
+          text-align: center;
+          }
+          .metrics-container {
+            display: flex;
+            justify-content: center; /* Center the boxes horizontally */
+            align-items: center; /* Center the boxes vertically */
+            flex-wrap: wrap; /* Wrap the boxes if they exceed the container width */
+        }
+    
+        .metric-box {
+            background-color: rgb(12, 84, 133);
+            margin: 10px; /* Add margin between the boxes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            font-size: 1.1em;
+            padding: 1em 0 1em 0;
+            border-radius: 8px;
+        }
+    
+        .metric-box h3,
+        .metric-box p {
+            color: white;
+        }
+          
+    
+    </style>
+  </head>
+
+  <body>
+    <div id="page-wrapper">
+        <div id="header-wrapper">
+      <div class="container">
+        <!-- Header -->
+        <header id="header">
+          <div class="inner">
+            <!-- Logo -->
+            <h1><a href="/" id="logo">Web Traffic Forecasting</a></h1>
+            <!-- Nav -->
+          </div>
+          <nav id="nav">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="forecast_form.html">Forecast</a></li>
+              <li><a href="views.html">Views</a></li>
+              <li><a href="single_forecast.html">Single Forecast</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+    </div>
+</div>
+    <!-- Main Wrapper -->
+    <div id="main-wrapper">
+      <div class="wrapper style2">
+        <div class="inner">
+          <div class="container">
+            
+              <h1>Forecast Results</h1>
+           
+            <h2>
+              The Graph Plot shows the overall forecasting of the dataset.
+            </h2>
+
+            <div style="text-align: left">
+              <!-- Adjust the src to fit your actual plot path -->
+              <img
+                src="{{ url_for('static', filename='forecast_plot.png') }}"
+                alt="Observed vs Forecasted Plot"
+                class="plot-image"
+               
+              />
+            </div>
+
+            <button onclick="toggleMetrics()">Show Metrics</button>
+            <br />
+            <br />
+            <!-- Div containing the metrics -->
+                      
+            <div class="metrics-container">
+                <header class="major">
+                    <h2>The metrics information of overall dataset:</h2>
+                </header>
+                <div class="metric-box">
+                    <h3>Root Mean Squared Error</h3>
+                    <p>{{ rmse }}</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Accuracy</h3>
+                    <p>{{ accuracy }}</p>
+                </div>
+            </div>
+          
+          
+          
+            <form action="/future_traffic" method="get">
+              <button type="submit">Predict Future Traffic</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Initially hide the metrics container
+      document.addEventListener("DOMContentLoaded", function () {
+        var metricsDiv = document.querySelector(".metrics-container");
+        metricsDiv.style.display = "none";
+      });
+
+      function toggleMetrics() {
+        var metricsDiv = document.querySelector(".metrics-container");
+        metricsDiv.style.display =
+          metricsDiv.style.display === "none" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>

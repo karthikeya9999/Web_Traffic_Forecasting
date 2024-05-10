@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Forecast</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../static/assets/css/main.css" />
+</head>
+<style>
+	#nav ul {
+		padding-left: 0; /* Remove default padding */
+		list-style: none; /* Remove default bullet points */
+	}
+	
+	#nav ul li {
+		display: inline-block; /* Display items horizontally */
+		padding: 0 0.8em; /* Maintain the same padding */
+	}
+    .container {
+		text-align: center;
+    }
+   
+</style>
+<body >
+    <div id="page-wrapper">
+        <!-- Header Wrapper -->
+        <div id="header-wrapper">
+            <div class="container">
+                <!-- Header -->
+                <header id="header">
+                    <div class="inner">
+                        <!-- Logo -->
+                        <h1><a href="/templates/home.html" id="logo">Web Traffic Forecasting</a></h1>
+                        <!-- Nav -->
+                         </div>
+                        <nav id="nav">
+                            <ul>
+                                <li ><a href="/">Home</a></li>
+                                <li class="current_page_item"><a href="./forecast_form.html">Forecast</a></li>
+                                <li><a href="views.html">Views</a></li>
+                                <li><a href="single_forecast.html">Single Forecast</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                </header>
+            </div>
+        </div>
+        <!-- Main Wrapper -->
+        <div id="main-wrapper">
+            <div class="wrapper style3">
+               
+                <div class="inner">
+                    <div class="container">
+                            <!-- Content -->
+                                
+                                    <h2>Forecasting</h2>
+                                 <h3>The Forecasting provides predictions or estimates of future trends or outcomes based on historical data and analytical models.</h3>
+                        
+                                <form method="POST" action="/forecast_form.html">
+                                    <button type="submit">Get Forecast</button>
+                                </form>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+</html>
